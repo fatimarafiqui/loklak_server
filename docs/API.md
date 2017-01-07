@@ -18,7 +18,7 @@ Most servlets can be called with a `callback=<function-name>` property to call a
 
 ##Configuration Dependencies
 
-Some servlets read and provide configuration data from `data/settings/customized_config.properties`. To enable such services please edit that file and add your custom values. Example: these values are needed by `loklak_webclient`. 
+Some servlets read and provide configuration data from `data/settings/customized_config.properties`. To enable such services please edit that file and add your custom values. Example: these values are needed by [loklak_webclient](https://github.com/fossasia/loklak_webclient). 
 
 ```
 client.apiUrl                  : http://localhost:9000/api/
@@ -284,9 +284,7 @@ These extracted fields are especially useful for search aggregations, see below.
 
 A search result may also have field aggregations (aka 'facets') if they are requested in the search request. To get aggregations, the attribute 'source' MUST be set to 'cache' and the fields to be aggregated must be listed in the attribute 'fields'. Aggregations are only useful if the search query contains also since- and until-modifiers to define a time frame. A typical aggregation search request sets the count of search results to zero. Example:
 
-```
-url : http://localhost:9000/api/search.json?q=spacex%20since:2015-04-01%20until:2015-04-06&source=cache&count=0&fields=mentions,hashtags&limit=6
-```
+url : [http://localhost:9000/api/search.json?q=spacex%20since:2015-04-01%20until:2015-04-06&source=cache&count=0&fields=mentions,hashtags&limit=6](http://localhost:9000/api/search.json?q=spacex%20since:2015-04-01%20until:2015-04-06&source=cache&count=0&fields=mentions,hashtags&limit=6)
 
 ```
 {
@@ -332,9 +330,8 @@ url : http://localhost:9000/api/search.json?q=spacex%20since:2015-04-01%20until:
 
 Loklak can also suggest what's trending and can give you the list of trending hashtags using the same search aggregations method. To find out the most trending hashtags on loklak since a particular date. Other filters like until can also be applied, here is a sample request
 
-```
-url  : http://loklak.org/api/search.json?q=since:2016-06-01&source=cache&count=0&fields=hashtags
-```
+url  : [http://loklak.org/api/search.json?q=since:2016-06-01&source=cache&count=0&fields=hashtags](http://localhost:9000/api/search.json?q=spacex%20since:2015-04-01%20until:2015-04-06&source=cache&count=0&fields=mentions,hashtags&limit=6)
+
 
 ```
 {
@@ -375,9 +372,8 @@ url  : http://loklak.org/api/search.json?q=since:2016-06-01&source=cache&count=0
 
 A special field is the "created_at" field which will create a date histogram if listed in the GET-attribute 'fields'. The date histogram resolution depends on the time frame as given in the query modifier with the 'since' and 'until' time limits: minutes if the time frame is below three hours, hours if the time frame is below seven days and days otherwise. Example:
 
-```
-url : http://localhost:9000/api/search.json?q=spacex%20since:2015-04-05_23:10%20until:2015-04-05_23:20&source=cache&count=0&fields=created_at&timezoneOffset=-120
-```
+
+url : [http://localhost:9000/api/search.json?q=spacex%20since:2015-04-05_23:10%20until:2015-04-05_23:20&source=cache&count=0&fields=created_at&timezoneOffset=-120](http://localhost:9000/api/search.json?q=spacex%20since:2015-04-05_23:10%20until:2015-04-05_23:20&source=cache&count=0&fields=created_at&timezoneOffset=-120)
 
 ```
 {
@@ -422,10 +418,10 @@ url : http://localhost:9000/api/search.json?q=spacex%20since:2015-04-05_23:10%20
 
 It is also possible to specify the order in descending order for the following filter options favourites_count, retweet_count and the default being created_at. Here are the examples of the different queries which make this happen.
 
-```
-retweet count:   : http://loklak.org/api/search.json?timezoneOffset=-120&q=fossasia&order=retweet_count&source=cache
-favorites count:   : http://localhost:9000/api/search.json?timezoneOffset=-120&q=fossasia&order=favourites_count&source=cache
-```
+
+- retweet count:   : [http://loklak.org/api/search.json?timezoneOffset=-120&q=fossasia&order=retweet_count&source=cache](http://loklak.org/api/search.json?timezoneOffset=-120&q=fossasia&order=retweet_count&source=cache)
+
+- favorites count:   : [http://localhost:9000/api/search.json?timezoneOffset=-120&q=fossasia&order=favourites_count&source=cache](http://localhost:9000/api/search.json?timezoneOffset=-120&q=fossasia&order=favourites_count&source=cache)
 
 ```
   {
@@ -641,14 +637,19 @@ All search queries are recorded to be able to provide a suggestion function base
 
 A special search term is only allowed for localhost access: the empty search term. This will list all queries so far according to the given result order. It is possible to order by first query time, latest query time, number of times a user submitted a query, number of Tweets per day estimated by the latest query result and much more. Examples:
 
-```
-http://localhost:9000/api/suggest.json?q=soj&orderby=query_count
-http://localhost:9000/api/suggest.json?count=20&order=asc
-http://localhost:9000/api/suggest.json?count=20&order=desc
-http://localhost:9000/api/suggest.json?count=20&orderby=messages_per_day&order=desc
-http://localhost:9000/api/suggest.json?until=now&selectby=retrieval_next&orderby=retrieval_next&order=desc
-http://localhost:9000/api/suggest.json?q=&timezoneOffset=-60&count=90&source=query&order=asc&orderby=retrieval_next&until=now&selectby=retrieval_next&random=3&minified=true&port.http=9000&port.https=9443&peername=anonymous
-```
+
+- [http://localhost:9000/api/suggest.json?q=soj&orderby=query_count](http://localhost:9000/api/suggest.json?q=soj&orderby=query_count)
+
+- [http://localhost:9000/api/suggest.json?count=20&order=asc](http://localhost:9000/api/suggest.json?count=20&order=asc)
+
+- [http://localhost:9000/api/suggest.json?count=20&order=desc](http://localhost:9000/api/suggest.json?count=20&order=desc)
+
+- [http://localhost:9000/api/suggest.json?count=20&orderby=messages_per_day&order=desc](http://localhost:9000/api/suggest.json?count=20&orderby=messages_per_day&order=desc)
+
+- [http://localhost:9000/api/suggest.json?until=now&selectby=retrieval_next&orderby=retrieval_next&order=desc](http://localhost:9000/api/suggest.json?until=now&selectby=retrieval_next&orderby=retrieval_next&order=desc)
+
+- [http://localhost:9000/api/suggest.json?q=&timezoneOffset=-60&count=90&source=query&order=asc&orderby=retrieval_next&until=now&selectby=retrieval_next&random=3&minified=true&port.http=9000&port.https=9443&peername=anonymous](http://localhost:9000/api/suggest.json?q=&timezoneOffset=-60&count=90&source=query&order=asc&orderby=retrieval_next&until=now&selectby=retrieval_next&random=3&minified=true&port.http=9000&port.https=9443&peername=anonymous)
+
 
 Delete operations are also possible for localhost clients by simply adding a delete=true to the call properties. This will produce a result set like without the delete property, but all data shown are deleted afterwards.
 
@@ -791,13 +792,14 @@ This API is open and can be accessed without any restrictions!
 
 This servlet provides geocoding of place names to location coordinates and also reverse geocoding of location coordinates to place names. Additionally to the added geocoding servlet: you can geocode place names into locations with this. To render markers, use the 'mark' location (they have an applied fuzziness). location coordinates are given as [lon,lat] Example usage:
 
-```
-    http://loklak.org/api/geocode.json?data={%22places%22:[%22Frankfurt%20am%20Main%22,%22New%20York%22,%22Singapore%22]}
-    Other languages:
-    http://loklak.org/api/geocode.json?data={%22places%22:[%22%E5%9C%A3%E8%83%A1%E5%88%A9%E5%A8%85%20%E5%BE%B7%E6%B4%9B%E9%87%8C%E4%BA%9A%22]}
-    Multiple Cities:
-    http://loklak.org/api/geocode.json?minified=true&data={%22places%22:[%22Singapore%22,%20%22New%20York%22,%20%22Los%20Angeles%22]}
-```
+
+- [http://loklak.org/api/geocode.json?data={%22places%22:[%22Frankfurt%20am%20Main%22,%22New%20York%22,%22Singapore%22]}](http://loklak.org/api/geocode.json?data={%22places%22:[%22Frankfurt%20am%20Main%22,%22New%20York%22,%22Singapore%22]})
+
+- Other languages:
+[http://loklak.org/api/geocode.json?data={%22places%22:[%22%E5%9C%A3%E8%83%A1%E5%88%A9%E5%A8%85%20%E5%BE%B7%E6%B4%9B%E9%87%8C%E4%BA%9A%22]}](http://loklak.org/api/geocode.json?data={%22places%22:[%22%E5%9C%A3%E8%83%A1%E5%88%A9%E5%A8%85%20%E5%BE%B7%E6%B4%9B%E9%87%8C%E4%BA%9A%22]})
+
+- Multiple Cities:[http://loklak.org/api/geocode.json?minified=true&data={%22places%22:[%22Singapore%22,%20%22New%20York%22,%20%22Los%20Angeles%22]}](http://loklak.org/api/geocode.json?minified=true&data={%22places%22:[%22Singapore%22,%20%22New%20York%22,%20%22Los%20Angeles%22]})
+
 
 upgrade to geocode location detection: now recognizes also all alternative (different languages) place names. The geocode servlet shows all those alternative names in a string array. The minified version shortens this array to only one entry. The API also has reverse geocoding and fuzziness for marker computation.
 
@@ -896,9 +898,7 @@ Example
 
 Retrieval of the image
 
-```
-http://localhost:9000/api/proxy.png?screen_name=loklak_app&url=https://pbs.twimg.com/profile_images/577512240640733184/fizL4YIn_bigger.png
-```
+[http://localhost:9000/api/proxy.png?screen_name=loklak_app&url=https://pbs.twimg.com/profile_images/577512240640733184/fizL4YIn_bigger.png](http://localhost:9000/api/proxy.png?screen_name=loklak_app&url=https://pbs.twimg.com/profile_images/577512240640733184/fizL4YIn_bigger.png)
 
 ##/api/push.json
 
@@ -935,7 +935,7 @@ When messages arrive the back-end peer, the value "source_type" of every message
 This API is open and can be accessed without any restrictions!
 ```
 
-An alternative solution to push Tweets data to back-end, using GeoJSON format. Messages are collected from provided url, which contains a GeoJSON Feature Collection. Each message is a GeoJSON Feature. Example:
+An alternative solution to push Tweets data to back-end, using GeoJSON format. Messages are collected from provided url, which contains a [GeoJSON Feature Collection](http://geojson.org/geojson-spec.html#introduction). Each message is a GeoJSON Feature. Example:
 
 ```
 {
@@ -995,15 +995,12 @@ The servlet returns with the same information as /api/push.json.
 
 Here is an example:
 
-```
-http://localhost:9000/api/push/geojson.json?url=mysite.com/mygeojson.json&source_type=IMPORT&screen_name=test
-```
+[http://localhost:9000/api/push/geojson.json?url=mysite.com/mygeojson.json&source_type=IMPORT&screen_name=test](http://localhost:9000/api/push/geojson.json?url=mysite.com/mygeojson.json&source_type=IMPORT&screen_name=test)
+
 
 Another example, with 3 field mapping rules:
 
-```
-http://localhost:9000/api/push/geojson.json?url=mysite.com/mygeojson.json&source_type=IMPORT&map_type=message_name:screen_name,username:user.name,user_shortname:user.screen_name
-```
+[http://localhost:9000/api/push/geojson.json?url=mysite.com/mygeojson.json&source_type=IMPORT&map_type=message_name:screen_name,username:user.name,user_shortname:user.screen_name](http://localhost:9000/api/push/geojson.json?url=mysite.com/mygeojson.json&source_type=IMPORT&map_type=message_name:screen_name,username:user.name,user_shortname:user.screen_name)
 
 ##/api/push/*.*
 
@@ -1109,9 +1106,7 @@ Which renders the output as:
 
 Here is an example :
 
-```
-http://localhost:9000/api/settings.json
-```
+[http://localhost:9000/api/settings.json](http://localhost:9000/api/settings.json)
 
 ##/api/account.json
 
@@ -1148,21 +1143,16 @@ The data object must have the following form:
 
 You can set such a record i.e. with the call
 
-```
-http://localhost:9000/api/account.json?action=update&data={"screen_name":"test","oauth_token":"abc","oauth_token_secret":"def"}
-```
+[http://localhost:9000/api/account.json?action=update&data={"screen_name":"test","oauth_token":"abc","oauth_token_secret":"def"}](http://localhost:9000/api/account.json?action=update&data={"screen_name":"test","oauth_token":"abc","oauth_token_secret":"def"})
 
 It can then be retrieved again with
 
-```
-http://localhost:9000/api/account.json?screen_name=test
-```
+[http://localhost:9000/api/account.json?screen_name=test](http://localhost:9000/api/account.json?screen_name=test)
 
 To add or update a record with apps settings, simply omit the OAuth details and just set apps
 
-```
-http://localhost:9000/api/account.json?action=update&data={"screen_name":"test","apps":{"wall":{"type":"horizontal"}}}
-```
+[http://localhost:9000/api/account.json?action=update&data={"screen_name":"test","apps":{"wall":{"type":"horizontal"}}}](http://localhost:9000/api/account.json?action=update&data={"screen_name":"test","apps":{"wall":{"type":"horizontal"}}})
+
 
 ##/api/user.json
 
@@ -1172,9 +1162,7 @@ This API is open and can be accessed without any restrictions!
 
 This servlet provides the retrieval of user followers and the accounts which the user is following. Just submit the screen_name as GET http attribute. Example:
 
-```
-http://loklak.org/api/user.json?screen_name=loklak_app
-```
+[http://loklak.org/api/user.json?screen_name=loklak_app](http://loklak.org/api/user.json?screen_name=loklak_app)
 
 ```
 {
@@ -1259,9 +1247,7 @@ http://loklak.org/api/user.json?screen_name=loklak_app
 
 It is also possible to get the followers of an account all at once. To trigger this, just add the attribute followers=<maxcount> to the request. The same applies to the account which the user is following, just add following=<maxcount>. This will produce a list of <maxcount> user entries in a 'topology' object. Example:
 
-```
-http://loklak.org/api/user.json?screen_name=loklak_app&followers=10000&following=10000
-```
+[http://loklak.org/api/user.json?screen_name=loklak_app&followers=10000&following=10000](http://loklak.org/api/user.json?screen_name=loklak_app&followers=10000&following=10000)
 
 ```
 {
@@ -1314,9 +1300,7 @@ the json of /api/apps.json now contains two more objects:
 
 Furthermore, the servlet can now be called with an 'category' property, like:
 
-```
-http://loklak.org/api/apps.json?category=Demo
-```
+[http://loklak.org/api/apps.json?category=Demo](http://loklak.org/api/apps.json?category=Demo)
 
 This will reduce the app list to the sub-list which contains only apps from that category.
 
@@ -1359,18 +1343,14 @@ data         = <binary>        // binary data of image
 
 For example,
 
-```
-http://localhost:9000/api/asset?id_str=608991531941425153&screen_name=loklak_messages&file=image0.png
-```
+[http://localhost:9000/api/asset?id_str=608991531941425153&screen_name=loklak_messages&file=image0.png](http://localhost:9000/api/asset?id_str=608991531941425153&screen_name=loklak_messages&file=image0.png)
 
 ... with data in POST parameter stores the file from /Users/admin/Desktop/wall0.png as attachment for a message with id 608991531941425153 assigned to user loklak_messages under the name image0.png
 
 Retrieval of this file with the browser you can do with GET request to:
 
-```
-http://localhost:9000/api/asset?id_str=608991531941425153&screen_name=loklak_messages&file=image0.png
-```
 
+[http://localhost:9000/api/asset?id_str=608991531941425153&screen_name=loklak_messages&file=image0.png](http://localhost:9000/api/asset?id_str=608991531941425153&screen_name=loklak_messages&file=image0.png)
 
 
 ##/api/threaddump.txt
@@ -1381,9 +1361,8 @@ This API has access limitations: localhost clients are granted more data than pu
 
 Simply download http://localhost:9000/api/threaddump.txt file. Either GET or POST request is valid for thread dump api. No parameter is needed in this api.
 
-```
-http://localhost:9000/api/threaddump.txt
-```
+
+[http://localhost:9000/api/threaddump.txt](http://localhost:9000/api/threaddump.txt)
 
 contains the real-time information about loklak in JVM, including:
 
@@ -1393,11 +1372,11 @@ contains the real-time information about loklak in JVM, including:
 * Status of individual threads
 * Threads that have been terminated
 
-Thread dump can be used to track the memory use of loklak, and it helps developers to discover potential problems like memory leaks. There are six states that has been assigned to a thread, see further reading: Enum Thread.State
+Thread dump can be used to track the memory use of loklak, and it helps developers to discover potential problems like memory leaks. There are six states that has been assigned to a thread, see further reading: [Enum Thread.State](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.State.html)
 
 At the end of the thread dump is a list of running thread. This list may indicate the load of the server.
 
-Here is some example of threaddump.txt(The following example has been delibrately cut to fit in the document):
+Here is some example of [threaddump.txt](http://localhost:9000/api/threaddump.txt)(The following example has been delibrately cut to fit in the document):
 
 ```
   ************* Start Thread Dump Thu Dec 31 07:51:47 CET 2015 *******************
@@ -1535,27 +1514,13 @@ This API is open and can be accessed without any restrictions!
 Usage-Description
 
 ```
-    text
-     = <text>
-    // Value of text like Hello
-    mlat
-     = <latitude coordinates>
-    // Latitude Value
-    mlon
-     = <longitude coordinates>
-    // Longitude Value
-    zoom
-     = <zoom value>
-    // Zoom Value
-    width
-     = <width>
-    // Width Value
-    height
-     = <height>
-    // Height Value
-    bbox
-     = <maplongWest,maplatSouth..>
-    // BBOX parameter
+text   = <text>                      // Value of text like Hello
+mlat   = <latitude coordinates>      // Latitude Value
+mlon   = <longitude coordinates>     // Longitude Value
+zoom   = <zoom value>                // Zoom Value
+width  = <width>                     // Width Value
+height = <height>                    // Height Value
+bbox   = <maplongWest,maplatSouth..> // BBOX parameter
 ```
 
 Result-Description
@@ -1586,9 +1551,7 @@ The servlet can produce also gif and jpg images, just change the extension of th
 
 Here is an example :
 
-```
-http://loklak.org/vis/markdown.png?text=hello%20world%0Dhello%20universe&color_text=000000&color_background=ffffff&padding=3
-```
+[http://loklak.org/vis/markdown.png?text=hello%20world%0Dhello%20universe&color_text=000000&color_background=ffffff&padding=3](http://loklak.org/vis/markdown.png?text=hello%20world%0Dhello%20universe&color_text=000000&color_background=ffffff&padding=3)
 
 ##/vis/piechart.png
 
@@ -1608,9 +1571,11 @@ Here is the request for the given data:
 }
 ```
   
-```
-http://loklak.org/vis/piechart.png?data={%22ford%22:%2217.272992%22,%22toyota%22:%2227.272992%22,%22renault%22:%2247.272992%22}&width=1000&height=1000
+[http://loklak.org/vis/piechart.png?data={%22ford%22:%2217.272992%22,%22toyota%22:%2227.272992%22,%22renault%22:%2247.272992%22}&width=1000&height=1000](http://loklak.org/vis/piechart.png?data={%22ford%22:%2217.272992%22,%22toyota%22:%2227.272992%22,%22renault%22:%2247.272992%22}&width=1000&height=1000)
 
+
+
+```
 data    = <text>  // Value of JSON Key:Value pairs to visualize
 width   = <text>  // Width of the image needed
 Height  = <text>  // Height of the image needed
@@ -1622,25 +1587,27 @@ If you want to use loklak within your application, There are libraries that are 
 
 Contribute to this library by opening an issue in case you find a bug or any missing functionality.
 
-- Python
+[Python](https://github.com/loklak/loklak_python_api)
+
 
 ```
     pip install python_loklak_api
 ```
 
-- Node.js
+[Node.js](https://github.com/loklak/loklak_nodejs_api)
 
 ```
     npm install loklak
 ```
 
-- C#.NET (nuget - Windows)
+[C#.NET](https://github.com/loklak/loklak_dotnet_wrapper) (nuget - Windows)
 
 ```
     Install-Package LoklakDotNet
 ```
 
-- Ruby
+[Ruby](https://github.com/loklak/loklak_ruby_api)
+
 
 ```
     gem install loklak
@@ -1785,10 +1752,10 @@ You send this this information as a GET / POST request. Here's a sample XML
 </project>
 ```
 
-* Query String: 
-```
-http://localhost:9000/api/xml2json.json?data=<xml>
-```
+- Query String: 
+
+[http://localhost:9000/api/xml2json.json?data=<xml>](http://localhost:9000/api/xml2json.json?data=<xml>)
+
 
 Resulting JSON
 
@@ -1981,10 +1948,9 @@ Any well formed CSV data source can be converted to JSON using the loklak's `csv
 data  = The CSV Data to be converted to JSON   // This is the field which takes data=<CSV,CSV,CSV%0ACSV,CSV,CSV>
 ```
 
-*Query String:
-```
-http://localhost:9000/api/xml2json.json?data=<csv>
-```
+- Query String:
+
+[http://localhost:9000/api/xml2json.json?data=<csv>](http://localhost:9000/api/xml2json.json?data=<csv>)
 
 ```
   twittername,name,org
@@ -1994,9 +1960,9 @@ http://localhost:9000/api/xml2json.json?data=<csv>
 
 Sample Query:
 
-```
-http://localhost:9000/api/csv2json.json?data=twittername,name,org%0A0rb1t3r,Michael%20Peter%20Christen,FOSSASIA%0Asudheesh001,Sudheesh%20Singanamalla,FOSSASIA%0A
-```
+[http://localhost:9000/api/csv2json.json?data=twittername,name,org%0A0rb1t3r,Michael%20Peter%20Christen,FOSSASIA%0Asudheesh001,Sudheesh%20Singanamalla,FOSSASIA%0A](http://localhost:9000/api/csv2json.json?data=twittername,name,org%0A0rb1t3r,Michael%20Peter%20Christen,FOSSASIA%0Asudheesh001,Sudheesh%20Singanamalla,FOSSASIA%0A)
+
+
 Output
 
 ```
